@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
+
 	"log"
 	"os"
 
@@ -25,12 +25,13 @@ func main() {
 	}
 
 	args := flag.Args()
+	fmt.Print(args)
 	if len(args) == 0 {
 		log.Fatal("Usage: hamrobazar <filename>")
 	}
 	configFile := args[0]
 
-	data, err := ioutil.ReadFile(configFile)
+	data, err := os.ReadFile(configFile)
 	if err != nil {
 		log.Fatalf("failed to read %s: %v", configFile, err)
 	}
